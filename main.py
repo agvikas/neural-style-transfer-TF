@@ -115,18 +115,16 @@ def main(unused_arg):
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
-        '''saver.restore(sess, "/content/drive/NeuralStyleTransfer/checkpoint/ckpt")'''
 
         for i in range(arg.iterations):
             _, loss_out = sess.run([train_op, loss], feed_dict={content_image: con_img, style_image: sty_img})
             print("iteration:{}/{} loss:{}".format(i+1, arg.iterations, loss_out))
 
-        saver.save(sess, "/content/drive/NeuralStyleTransfer/checkpoint/ckpt")
         artistic_image, = sess.run([random_image])
         artistic_image = np.squeeze(artistic_image)
         for i in range(3):
             artistic_image[:, :, i] = artistic_image[:, :, i] + vgg_mean[i]
-        cv2.imwrite("/content/drive/NeuralStyleTransfer/art_image.png", artistic_image)
+        cv2.imwrite(arg.output_path , artistic_image)
 
 
 if __name__ == "__main__":
