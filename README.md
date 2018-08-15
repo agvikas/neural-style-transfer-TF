@@ -27,7 +27,7 @@ or
 | beta          | b           | style loss weight. Default is 8.                                                         |
 | layer_loss_weights| lw      | weights for style loss at different layers. Default is [0.5, 1, 0.5, 0.5, 0.5].          |       
 
-# Sample Outputs 
+## Sample Outputs 
 The output images were generated using the following hyperparameters:  
 - learning_rate: 2 
 - iterations: 5000
